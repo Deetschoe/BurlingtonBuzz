@@ -4,33 +4,33 @@ import 'tiny-slider/dist/tiny-slider.css';
 
 function MyComponent() {
   const [isClient, setIsClient] = useState(false);
+  const [phone, setPhone] = useState("");
 
-  // useEffect(() => {
-  //   setIsClient(true);
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
 
-  //   if (isClient) {
-  //     // Create the h1 element
-  //     const titleElement = document.createElement('h1');
-  //     titleElement.textContent = "Burlington Buzz";
+  const handleSubmit = () => {
+    const formData = new FormData();
+    formData.append('phone', phone);
 
-  //     // Apply inline styles
-  //     titleElement.style.fontFamily = 'Arial, sans-serif';
-  //     titleElement.style.fontSize = '32px';
-  //     titleElement.style.color = '#333';
-  //     titleElement.style.textAlign = 'center';
-  //     titleElement.style.padding = '20px';
-  //     titleElement.style.backgroundColor = '#f5f5f5';
-
-  //     // Append the title to the placeholder in the HTML
-  //     const placeholder = document.getElementById('titlePlaceholder');
-  //     if (placeholder) {
-  //       placeholder.appendChild(titleElement);
-  //     }
-  //   }
-  // }, [isClient]);  // Runs whenever isClient changes
+    fetch('https://burlington-buzz-api.vercel.app/signup', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error));
+  };
 
   return (
-    <div>
+    <div>   
+      <label for="phone">Phone</label>
+      <div class="field">
+	    <i class="fas fa-phone"></i>
+	    <input onChange={handlePhoneChange} id="phone" type="tel" name="phone" placeholder="Your Phone Number" required/>
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
         <div>
           <h1 style={{fontFamily: "Arial, sans-serif", width: "100%", textAlign: "center"}}>Burlington Buzz</h1>
         </div>
