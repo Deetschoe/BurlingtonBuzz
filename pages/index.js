@@ -4,6 +4,31 @@ function MyComponent() {
   const [isClient, setIsClient] = useState(false);
   const [phone, setPhone] = useState("");
 
+  const article = {
+    title: "Man Gets Hot Dog Stuck In Pine Street Chimney",
+    category: "Culture/Politics", 
+    shortDescription: "It all started when Ralph got a little tipsy at last night’s super bowl party...",
+    thumbnail: "", 
+    datePublished: "Saturday September 30th, 8:00 AM EST",
+    author: {
+      name: "Elissa Framoni",
+      profilePicture: "", 
+      pronouns: "She/Her",
+      bio: "Cool gal who likes to write",
+      email: "elissyyyy@burlingtonbuzz.news"
+    },
+    slides: [
+      {
+        content: "Ralph is your typical sports fan: very fun and adventurous.",
+        image: ""
+      },
+      {
+        content: "Ralph is your typical sports fan: very fun and adventurous.",
+        image: ""
+      }
+    ]
+  }
+
   const handlePhoneChange = (event) => {
     setPhone(event.target.value);
   };
@@ -11,8 +36,8 @@ function MyComponent() {
   const handleSubmit = () => {
     const formData = new FormData();
     formData.append('phone', phone);
-
-    fetch('https://burlington-buzz-api.vercel.app/signup', {
+    console.log("This button is being clicked")
+    fetch('https://burlington-buzz-api.vercel.app/signup',  {
       method: 'POST',
       body: formData,
     })
@@ -30,6 +55,8 @@ function MyComponent() {
       <button onClick={handleSubmit}>Submit</button>
     </div>
         <div>
+
+          <p>{article.title}</p>
           <h1 style={{fontFamily: "Arial, sans-serif", width: "100%", textAlign: "center"}}>Burlington Buzz</h1>
         </div>
         <div id="titlePlaceholder"></div>
@@ -48,6 +75,7 @@ function MyComponent() {
         </button>
         <button id="next" className="controls" onClick={() => console.log("Next clicked!")}>
             <img src="/forward.svg" alt="Next Slide" style={{pointerEvents: "none"}} />
+            console
         </button>
     </div>
   );
