@@ -1,9 +1,34 @@
 import { useState, useEffect } from 'react';
 
 function MyComponent() {
+  const [isClient, setIsClient] = useState(false);
+  const [phone, setPhone] = useState("");
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    const formData = new FormData();
+    formData.append('phone', phone);
+
+    fetch('https://burlington-buzz-api.vercel.app/signup', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error));
+  };
 
   return (
-    <div>
+    <div>   
+      <label for="phone">Phone</label>
+      <div class="field">
+	    <i class="fas fa-phone"></i>
+	    <input onChange={handlePhoneChange} id="phone" type="tel" name="phone" placeholder="Your Phone Number" required/>
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
         <div>
           <h1 style={{fontFamily: "Arial, sans-serif", width: "100%", textAlign: "center"}}>Burlington Buzz</h1>
         </div>
