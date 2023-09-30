@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "next": "latest",
+    "next-pwa": "^5.6.0",
+    "next-transpile-modules": "^10.0.1",
     "react": "latest",
-    "react-dom": "latest",
-    "tiny-slider": "^2.9.4"
+    "react-dom": "latest"
   }
 }
