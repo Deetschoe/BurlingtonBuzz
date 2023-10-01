@@ -1,1 +1,18 @@
 
+name: Ping URL at 8 AM EST
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Schedule to run at 8 AM EST (12 PM UTC)
+
+jobs:
+  ping_url:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Ping URL
+        run: |
+          curl -sSf https://burlington-buzz-api.vercel.app/create
