@@ -97,13 +97,12 @@ const handleSubmit = () => {
           <div onClick={handleNextSlide} style={{ width: "50vw", right: 0, height: "100%", position: 'absolute' }}></div>
         </div>
       )} 
-<div
+<Div100vh
   style={{
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "column",
     width: "100vw",
-    height: "100vh",
     overflow: "hidden",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -209,7 +208,7 @@ const handleSubmit = () => {
             <p>We'll keep you updated with the latest news but more fun!</p>
           </div>
         )}
-      </div>
+      </Div100vh>
     </Div100vh>
   );
   
