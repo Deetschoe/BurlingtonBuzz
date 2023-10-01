@@ -13,6 +13,7 @@
     "next-pwa": "^5.6.0",
     "next-transpile-modules": "^10.0.1",
     "react": "latest",
+    "react-div-100vh": "^0.7.0",
     "react-dom": "latest"
   }
 }
