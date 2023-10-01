@@ -14,7 +14,7 @@ function MyComponent() {
     const formData = new FormData();
     formData.append('phone', phone);
 
-    fetch('https://burlington-buzz-api.vercel.app/signup', {
+    fetch('http://localhost:8000/signup', {
       method: 'POST',
       body: formData,
     })
