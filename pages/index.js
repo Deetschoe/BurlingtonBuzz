@@ -8,17 +8,17 @@ function MyComponent() {
   const [showInitialView, setShowInitialView] = useState(true);
   const [showPhoneSignup, setShowPhoneSignup] = useState(false);
 
-  const thankYouMessage = showPhoneSignup ? (
-    <div style={{ textAlign: 'center', padding: '16px' }}>
-      <h2>Thank you for signing up!</h2>
-      <p>We'll keep you updated with the latest news.</p>
-    </div>
-  ) : null;
-  
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
+
+
 
   const handlePrevSlide = () => {
     if (currentSlide !== 0) {
       setCurrentSlide((prevSlide) => (prevSlide - 1) % (article?.slides?.length + 1));
+      setShowPhoneSignup(false)
     }
   };
   
@@ -28,22 +28,33 @@ function MyComponent() {
     } else {
       // Show the phone signup slide when the user reaches the end of the slides
       setShowPhoneSignup(true);
+      
     }
+    
   };
 const handleSubmit = () => {
   const formData = new FormData();
   formData.append('phone', phone);
   console.log("This phone button is being clicked");
-  fetch('http://localhost:8000/signup',  {
+  fetch('https://burlington-buzz-api.vercel.app/signup',  {
     method: 'POST',
     body: formData,
   })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      setShowPhoneSignup(true);
+      if(data.error) {
+      alert(data.error)
+      } else {
+        setShowPhoneSignup(false)
+      }
+
     })
-    .catch((error) => console.error('Error:', error));
+    .catch((error) =>{
+     alert("Ah Didn't work")
+    console.error('Error:', error)
+    }
+    );
 };
   const [article, setArticle] = useState(null);
 
@@ -219,9 +230,15 @@ const handleSubmit = () => {
             backgroundColor: "rgba(255, 255, 255, 0.9)",
             borderRadius: "8px",
             zIndex: 999,
+            padding: 24,
           }}>
-            <h2 style={{ marginBottom: '20px' }}>Thank you for signing up!</h2>
-            <p>We'll keep you updated with the latest news but more fun!</p>
+            <h2 style={{ marginBottom: '20px' }}>Enjoy Our Stories? <br/> Get Daily Stories</h2>
+            <label for="phone">Phone Number:</label>
+      <div class="field">
+	    <i class="fas fa-phone"></i>
+	    <input onChange={handlePhoneChange} id="phone" type="tel" name="phone" placeholder="Your Phone Number" required/>
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
           </div>
         )}
       </Div100vh>
