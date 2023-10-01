@@ -1,9 +1,8 @@
-
-name: Ping URL at 8 AM EST
+name: Ping URL at 6:25 PM EST
 
 on:
   schedule:
-    - cron: '0 12 * * *' # Schedule to run at 8 AM EST (12 PM UTC)
+    - cron: '25 22 * * *' # Schedule to run at 6:25 PM EST (10:25 PM UTC)
 
 jobs:
   ping_url:
@@ -16,3 +15,4 @@ jobs:
       - name: Ping URL
         run: |
           curl -sSf https://burlington-buzz-api.vercel.app/create
+        # Add any other actions or commands you need here
