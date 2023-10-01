@@ -1,7 +1,7 @@
 {
-    "theme_color": "#FBF9E0",
-    "background_color": "#F41225",
-    "display": "standalone",
+    "theme_color": "#000",
+    "background_color": "#000",
+    "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
     "short_name": "Buzz",
