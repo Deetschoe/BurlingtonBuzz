@@ -1,18 +1,19 @@
-name: Ping URL at 6:25 PM EST
+name: Send POST Request at 6:27 PM EST
 
 on:
   schedule:
     - cron: '25 22 * * *' # Schedule to run at 6:25 PM EST (10:25 PM UTC)
 
 jobs:
-  ping_url:
+  send_post_request:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Ping URL
+      - name: Send POST Request
         run: |
-          curl -sSf https://burlington-buzz-api.vercel.app/create
+          curl -sSf -X POST -d "key1=value1&key2=value2" https://burlington-buzz-api.vercel.app/create
+        # Replace "key1=value1&key2=value2" with the data you need to send in the request body
         # Add any other actions or commands you need here
