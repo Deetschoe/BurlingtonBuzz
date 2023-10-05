@@ -1,0 +1,19 @@
+name: Send POST Request at 6:28 PM EST
+
+on:
+  schedule:
+    - cron: '28 22 * * *' # Schedule to run at 6:28 PM EST (10:28 PM UTC)
+
+jobs:
+  send_post_request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Send POST Request
+        run: |
+          curl -sSf -X POST -d "key1=value1&key2=value2" https://burlington-buzz-api.vercel.app/create
+        # Replace "key1=value1&key2=value2" with the data you need to send in the request body
+        # Add any other actions or commands you need here
