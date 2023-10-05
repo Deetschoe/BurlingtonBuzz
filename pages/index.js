@@ -18,7 +18,7 @@ function MyComponent() {
   const handlePrevSlide = () => {
     if (currentSlide !== 0) {
       setCurrentSlide((prevSlide) => (prevSlide - 1) % (article?.slides?.length + 1));
-      setShowPhoneSignup(false)
+      // setShowPhoneSignup(false)
     }
   };
   
@@ -27,7 +27,7 @@ function MyComponent() {
       setCurrentSlide((nextSlide) => nextSlide + 1);
     } else {
       // Show the phone signup slide when the user reaches the end of the slides
-      setShowPhoneSignup(true);
+      // setShowPhoneSignup(true);
       
     }
     
@@ -46,7 +46,8 @@ const handleSubmit = () => {
       if(data.error) {
       alert(data.error)
       } else {
-        setShowPhoneSignup(false)
+        console.log("ok")
+        // setShowPhoneSignup(false)
       }
 
     })
